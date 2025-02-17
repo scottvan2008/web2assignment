@@ -40,6 +40,7 @@ export default function Counter() {
                     <label className="block text-sm font-medium text-gray-700">
                         Item Name:
                         <input
+                            placeholder="Item name"
                             type="text"
                             value={name}
                             onChange={(event) => setName(event.target.value)}
