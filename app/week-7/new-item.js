@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-export default function NewItem() {
+export default function NewItem({ onAddItem }) {
     const [name, setName] = useState(""); // 商品名称状态
     const [quantity, setQuantity] = useState(1); // 商品数量状态
     const [category, setCategory] = useState("produce"); // 商品分类状态
@@ -20,11 +20,9 @@ export default function NewItem() {
     // 表单提交处理
     const handleSubmit = (event) => {
         event.preventDefault();
-        let item = { name, quantity, category };
-        console.log(item);
-        alert(
-            `Added item: ${name}\nQuantity: ${quantity}\nCategory: ${category}`
-        );
+        const newId = Math.floor(Math.random() * 1000);
+        const newItem = { id: newId, name, quantity, category };
+        onAddItem(newItem);
 
         // 重置表单
         setName("");
